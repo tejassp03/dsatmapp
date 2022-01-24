@@ -9,6 +9,7 @@ import {
   Image,
   StyleSheet,
 } from "react-native";
+import { Dimensions } from "react-native-web";
 /* import {ImageBackground,ScrollView} from 'react-native-reanimated';*/
 import { images, SIZES, icons,FONTS } from "../constants";
 
@@ -121,19 +122,46 @@ const HomeScreen = ({ navigation }) => {
                 <Text style={{fontSize: 18,fontWeight: "bold",color:'white'}}>View Profile</Text>
           </TouchableOpacity>
           </View>   
-          </View>
-         
-           
+          </View>          
           </View>
         </ImageBackground>
+       
       </View>
+      
     );
+  }
+  function renderNotification(){
+      return (
+        <View style={{
+          flexDirection: "column",
+          paddingHorizontal: 20,
+          width: "100%",
+
+      }}>
+        <View style={{width: "50%"}}>
+              <Text style={{fontSize:22, marginTop: -20}}>Notifications
+              </Text>
+        </View>
+        <View style={styles.listTab}>
+          <TouchableOpacity onPress={() => console.log("Pressed")} style={styles.btnTab}>
+            <Text>Notification</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => console.log("Pressed")} style={styles.btnTab}>
+            <Text>Circular</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => console.log("Pressed")} style={styles.btnTab}>
+            <Text>LMSNotification</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+      );
   }
   return (
     <ScrollView>
       <View style={{ flex: 1, paddingBottom: 100 }}>{renderheader()}</View>
+      <View style={{ flex: 1, paddingBottom: 100 }}>{renderNotification()}</View>
     </ScrollView>
-  );
+  );  
 };
 
 const styles = StyleSheet.create({
@@ -144,7 +172,7 @@ const styles = StyleSheet.create({
         padding:20,
         flexDirection: 'row',
         borderRadius:15,
-        
+        shadowRadius:5,shadowColor: 'black',       
     },
     samerow:{
     flexDirection: 'row',
@@ -156,7 +184,20 @@ const styles = StyleSheet.create({
       fontSize: 20,
       fontWeight: "bold",
       marginRight:10
-    }
+    },
+    btnTab: {
+      width: 90,
+      borderWidth: .5,
+      marginLeft: 10,borderRadius: 5,
+      marginTop: 10,
+      flexDirection: "row",
+    },
+    listTab: {
+      backgroundColor:'white',
+      borderRadius:15,
+      height:200,
+    },
+   
   });
   
 export default HomeScreen;
